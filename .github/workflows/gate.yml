@@ -1,0 +1,16 @@
+name: PR Auth Gate
+on:
+  pull_request:
+  push:
+    branches-ignore:
+      - "gh-readonly-queue/**"
+    tags:
+      - "*"
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    # To run and succeed this gate job, any fork pull requests must have
+    # approval from some user with write access, so just instantly succeed.
+    steps:
+      - run: echo "Auth Gate Passed"
