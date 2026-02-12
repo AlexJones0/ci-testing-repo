@@ -1,0 +1,16 @@
+name: Main CI
+on:
+  pull_request:
+  push:
+    branches-ignore:
+      - "gh-readonly-queue/**"
+    tags:
+      - "*"
+
+jobs:
+  main:
+    name: Test job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test step
+        run: echo "Main Test job has been run."
