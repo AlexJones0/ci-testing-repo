@@ -11,4 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Test step
-        run: echo "Secondary Test job has been run."
+        run: >
+          echo "Secondary Test job has been run." \
+          echo "${{ github.event }}" \
+          echo "${{ github.event.workflow_run }}" \
+          echo "${{ github.event.workflow_run.pull_requests }}" \
+          echo "${{ github.event.workflow_run.pull_requests[0] }}" \
+          echo "${{ github.event.workflow_run.pull_requests[0].base.ref }}"
