@@ -1,0 +1,20 @@
+name: Secondary CI
+on:
+  pull_request_target:
+    branches:
+      # Only run the secondary CI on `main` or `testing`
+      - "main"
+      - "testing"
+  push:
+    branches-ignore:
+      - "backport-*"
+      - "gh-readonly-queue/**"
+    tags:
+      - "*"
+
+jobs:
+  secondary:
+    name: Test job
+    runs-on: ubuntu-latest
+    steps:
+      echo "Secondary Test job has been run."
